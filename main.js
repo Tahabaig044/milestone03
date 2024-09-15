@@ -35,7 +35,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-// Utility function to convert image file to Base64 string
 var fileToBase64 = function (file) {
     return new Promise(function (resolve, reject) {
         var reader = new FileReader();
@@ -44,7 +43,6 @@ var fileToBase64 = function (file) {
         reader.readAsDataURL(file);
     });
 };
-// Function to generate resume HTML
 var generateResumeHTML = function () { return __awaiter(_this, void 0, void 0, function () {
     var nameInput, emailInput, phoneInput, addressInput, institutionInput, degreeInput, graduationDateInput, skillsInput, companyInput, positionInput, startDateInput, endDateInput, responsibilitiesInput, aboutInput, photoInput, name, email, phone, address, photoBase64, _a, institution, degree, graduationDate, skills, company, position, startDate, endDate, responsibilities, about, emailPattern, phonePattern;
     var _b;
@@ -66,7 +64,6 @@ var generateResumeHTML = function () { return __awaiter(_this, void 0, void 0, f
                 responsibilitiesInput = document.getElementById('responsibilities');
                 aboutInput = document.getElementById('about-me');
                 photoInput = document.getElementById('photo');
-                // Basic validation
                 if (!nameInput || !emailInput || !phoneInput || !addressInput ||
                     !institutionInput || !degreeInput || !graduationDateInput ||
                     !skillsInput || !companyInput || !positionInput ||
@@ -125,7 +122,6 @@ var generateResumeHTML = function () { return __awaiter(_this, void 0, void 0, f
         }
     });
 }); };
-// Event listeners and functions
 document.addEventListener('DOMContentLoaded', function () {
     var generateButton = document.getElementById('generate-resume');
     var downloadButton = document.getElementById('download-resume');
@@ -160,14 +156,10 @@ document.addEventListener('DOMContentLoaded', function () {
         a.click();
         URL.revokeObjectURL(url);
     });
-    // editButton.addEventListener('click', () => {
-    //     resumeOutput.classList.add('hidden');
-    // });
     shareButton.addEventListener('click', function () {
         var resumeURL = 'https://example.com/resume.html'; // Replace with the actual URL
         window.open(resumeURL, '_blank');
     });
-    // Toggle skills visibility
     var toggleSkillsButton = document.getElementById('toggle-skills');
     var skillsContent = document.getElementById('skills-content');
     toggleSkillsButton.addEventListener('click', function () {
@@ -180,7 +172,6 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleSkillsButton.textContent = 'Show Skills';
         }
     });
-    // Navigation toggle script
     var navToggle = document.getElementById('nav-toggle');
     var navLinks = document.getElementById('nav-links');
     navToggle.addEventListener('click', function () {

@@ -1,4 +1,3 @@
-// Utility function to convert image file to Base64 string
 const fileToBase64 = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -7,10 +6,7 @@ const fileToBase64 = (file: File): Promise<string> => {
         reader.readAsDataURL(file);
     });
 };
-
-// Function to generate resume HTML
 const generateResumeHTML = async (): Promise<string> => {
-    // Get all inputs
     const nameInput = document.getElementById('name') as HTMLInputElement;
     const emailInput = document.getElementById('email') as HTMLInputElement;
     const phoneInput = document.getElementById('phone') as HTMLInputElement;
@@ -27,7 +23,7 @@ const generateResumeHTML = async (): Promise<string> => {
     const aboutInput = document.getElementById('about-me') as HTMLTextAreaElement;
     const photoInput = document.getElementById('photo') as HTMLInputElement | null;
 
-    // Basic validation
+   
     if (!nameInput || !emailInput || !phoneInput || !addressInput ||
         !institutionInput || !degreeInput || !graduationDateInput ||
         !skillsInput || !companyInput || !positionInput ||
@@ -53,35 +49,28 @@ const generateResumeHTML = async (): Promise<string> => {
     const responsibilities = responsibilitiesInput.value.trim();
     const about = aboutInput ? aboutInput.value.trim() : '';
 
-    // Validate if all fields are filled
+
     if (!name || !email || !phone || !address || !institution ||
         !degree || !graduationDate || !skills || !company ||
         !position || !startDate || !endDate || !responsibilities) {
         alert('Please fill in all required fields.');
         return '';
     }
-
-    // Validate email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
         alert('Please enter a valid email address.');
         return '';
     }
-
-    // Validate phone number (example: basic validation for 10-digit phone numbers)
     const phonePattern = /^\d{10}$/;  // Adjust regex pattern as needed
     if (!phonePattern.test(phone)) {
         alert('Please enter a valid phone number (10 digits).');
         return '';
     }
 
-    // Validate dates (simple check)
     if (new Date(startDate) > new Date(endDate)) {
         alert('End date cannot be before the start date.');
         return '';
     }
-
-    // Generate resume HTML
     return `
         <!DOCTYPE html>
         <html lang="en">
@@ -128,7 +117,6 @@ const generateResumeHTML = async (): Promise<string> => {
     `;
 };
 
-// Event listeners and functions
 document.addEventListener('DOMContentLoaded', () => {
     const generateButton = document.getElementById('generate-resume') as HTMLButtonElement;
     const downloadButton = document.getElementById('download-resume') as HTMLButtonElement;
@@ -158,16 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
         URL.revokeObjectURL(url);
     });
 
-    // editButton.addEventListener('click', () => {
-    //     resumeOutput.classList.add('hidden');
-    // });
-
     shareButton.addEventListener('click', () => {
-        const resumeURL = 'https://example.com/resume.html'; // Replace with the actual URL
+        const resumeURL = 'https://example.com/resume.html'; 
         window.open(resumeURL, '_blank');
     });
 
-    // Toggle skills visibility
     const toggleSkillsButton = document.getElementById('toggle-skills') as HTMLButtonElement;
     const skillsContent = document.getElementById('skills-content') as HTMLElement;
 
@@ -180,8 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleSkillsButton.textContent = 'Show Skills';
         }
     });
-
-    // Navigation toggle script
     const navToggle = document.getElementById('nav-toggle') as HTMLButtonElement;
     const navLinks = document.getElementById('nav-links') as HTMLElement;
 
